@@ -312,8 +312,9 @@ async def redirect_callback(code: str, state: Optional[str] = None):
             response.set_cookie(**details, domain=domain)
             # Set the same cookie for localhost if we're doing a redirect to another domain (this is likely a dev mode request)
             # We may want to restrict this to development environments in the future...
-            if redirect_domain not in [domain, ""]:
-                response.set_cookie(**details, domain="localhost")
+            # if redirect_domain not in [domain, ""]:
+            response.set_cookie(**details, domain="localhost")
+            response.set_cookie(**details)
 
             return response
 
