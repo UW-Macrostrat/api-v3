@@ -303,25 +303,25 @@ async def redirect_callback(code: str, state: Optional[str] = None):
 
             # Set a cookie for the API domain
             response.set_cookie(
-                key=access_token_key,
-                value=f"Bearer {access_token}",
-                httponly=True,
+                access_token_key,
+                f"Bearer {access_token}",
                 domain=domain,
+                httponly=True,
                 samesite="lax",
             )
             # Set the same cookie for localhost if we're doing a redirect to another domain (this is likely a dev mode request)
             # We may want to restrict this to development environments in the future...
             # if redirect_domain not in [domain, ""]:
             response.set_cookie(
-                key=access_token_key,
-                value=f"Bearer {access_token}",
-                httponly=True,
+                access_token_key,
+                f"Bearer {access_token}",
                 domain="localhost",
+                httponly=True,
                 samesite="lax",
             )
             response.set_cookie(
-                key=access_token_key,
-                value=f"Bearer {access_token}",
+                access_token_key,
+                f"Bearer {access_token}",
                 httponly=True,
             )
 
